@@ -8,6 +8,12 @@ const parentCategory = mongoose.Schema(
     title: { type: String},
     description: { type: String },
     image:{type:String},
+    parentcategoryCourses: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "course",
+      },
+    ],
     createdAt: {
       type: Date,
       default: Date.now,

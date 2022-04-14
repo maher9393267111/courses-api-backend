@@ -1,7 +1,7 @@
-//const mongoose = require("../db/mongoConnection");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const instructorSchema = mongoose.Schema(
+const categorySchema= mongoose.Schema(
   {
     name: {
       type: String,
@@ -14,10 +14,10 @@ const instructorSchema = mongoose.Schema(
     categoryCourses: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Course",
+        ref: "course",
       },
     ],
-cateegoryParent:{
+categoryParent:{
     type: Schema.Types.ObjectId,
     ref: "parentcat",
 

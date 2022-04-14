@@ -1,10 +1,10 @@
-//const mongoose = require("../db/mongoConnection");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const customizeSchema = mongoose.Schema(
   {
  
-
+name: {type:String},
     image:{type:String},
     createdAt: {
       type: Date,

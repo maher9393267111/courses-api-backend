@@ -1,4 +1,4 @@
-//const mongoose = require("../db/mongoConnection");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const instructorSchema = mongoose.Schema(
@@ -7,6 +7,7 @@ const instructorSchema = mongoose.Schema(
     title: { type: String },
     about: { type: String },
     image: { type: String },
+    Role:{type:String, default:"instructor"  }  ,
     exprirence: {
       type: String,
     },
@@ -14,13 +15,21 @@ const instructorSchema = mongoose.Schema(
     hisCourses: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Course",
+        ref: "course",
       },
     ],
+    hisLectures: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Lecture",
+      },
+    ],
+
+
   },
   { timestamps: true }
 );
 
 const instructor = mongoose.model("instructor", instructorSchema);
 
-module.exports = { instructor };
+module.exports =  instructor ;

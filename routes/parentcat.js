@@ -17,6 +17,9 @@ var storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
+router.get("/all-category", categoryController.getAllCategory);
+
+
 router.post("/add-category",  upload.single("cImage"), categoryController.creatparentcat);
 
 // editpaentcat
@@ -25,11 +28,26 @@ router.put("/update-category",  upload.single("cImage"), categoryController.edit
 
 
 
-// router.post(
-//   "/delete-category",
-//   loginCheck,
-//   categoryController.getDeleteCategory
-// );
+router.delete(
+  "/delete-category",
+ 
+  categoryController.DeleteCatparent
+);
+
+
+
+// parent cat all his child categories
+
+router.get("/all-childcat/:id", categoryController.getAllChildCategory);
+
+
+// getAllcourses--> all parentat byid all his courses
+
+router.get("/all-childcourses/:id", categoryController.getAllcourses);
+
+
+
+
 
 
 module.exports = router;

@@ -12,12 +12,18 @@ require("dotenv").config();
 const app = express();
 
 const parentcatRoute =require('./routes/parentcat')
-
+const categryRoute =require('./routes/category')
+const instructorRoute = require('./routes/instructor')
+const customizeRoute = require('./routes/customize')
+const coursesRoutes = require('./routes/course')
+const lectureRoutes = require('./routes/lecture')
+const studentRoute = require('./routes/student')
 // middlewares
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
 
 
 
@@ -26,12 +32,12 @@ app.use(express.static("public"));
 // routes middleware
 
   app.use('/api/parentcat', parentcatRoute)
-// app.use('/api',catRoute)
-// app.use('/api',SubRoutes)
-// app.use('/api',ProductRoute)
-// app.use('/api',CloudRoute)
-// app.use('/api',UserRoute)
-// app.use('/api',CuponRoute)
+ app.use('/api/category',categryRoute)
+ app.use('/api/instructor',instructorRoute)
+ app.use('/api/customize',customizeRoute)
+app.use('/api/course',coursesRoutes)
+ app.use('/api/lecture',lectureRoutes)
+ app.use('/api/student',studentRoute)
 // app.use('/api',StripeRoute)
 // app.use('/api',AdminRoute)
 //   readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
